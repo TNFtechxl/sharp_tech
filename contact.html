@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sharp Tech — Contact</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Inter;
+  background:#060612;
+  color:#fff;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:-30%;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0,229,255,0.8), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(168,85,247,0.8), transparent 40%);
+  filter:blur(120px);
+}
+
+/* MOUSE GLOW */
+.glow{
+  position:fixed;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  pointer-events:none;
+  background:radial-gradient(circle, rgba(0,229,255,0.25), transparent 70%);
+  filter:blur(40px);
+  z-index:-1;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  padding:20px;
+  background:rgba(0,0,0,0.4);
+}
+
+a{color:#aaa;text-decoration:none;margin-left:15px}
+
+.container{max-width:600px;margin:auto;padding:40px}
+
+input,textarea{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  background:#00e5ff;
+  border:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow" id="glow"></div>
+
+<header>
+  <div><b>Contact</b></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="pricings.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="container">
+
+<h2>Contact Us</h2>
+
+<input placeholder="Name">
+<input placeholder="course">
+<textarea placeholder="Message"></textarea>
+<a class="btn primary" href="https://wa.me/+2348050263447?text=I'm%20interested%20in%20your%20services.">send</a>
+
+
+</div>
+
+<script>
+const glow=document.getElementById("glow");
+document.addEventListener("mousemove",(e)=>{
+  glow.style.left=(e.clientX-110)+"px";
+  glow.style.top=(e.clientY-110)+"px";
+});
+</script>
+
+</body>
+</html>

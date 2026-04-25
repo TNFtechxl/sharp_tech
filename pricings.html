@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sharp Tech — Pricing</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Inter;
+  background:#060612;
+  color:#fff;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:-30%;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0,229,255,0.8), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(168,85,247,0.8), transparent 40%);
+  filter:blur(120px);
+}
+
+/* MOUSE GLOW */
+.glow{
+  position:fixed;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  pointer-events:none;
+  background:radial-gradient(circle, rgba(0,229,255,0.25), transparent 70%);
+  filter:blur(40px);
+  z-index:-1;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  padding:20px;
+  background:rgba(0,0,0,0.4);
+}
+
+a{color:#aaa;text-decoration:none;margin-left:15px}
+
+.card{
+  display:inline-block;
+  width:250px;
+  margin:10px;
+  padding:20px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.price{font-size:28px;color:#00e5ff}
+</style>
+</head>
+
+<body>
+
+<div class="glow" id="glow"></div>
+
+<header>
+  <div><b>Pricing</b></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="pricings.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div style="text-align:center;padding:40px">
+
+<div class="card">
+<h3>weekly</h3>
+<div class="price">$2</div>
+</div>
+
+<div class="card">
+<h3>monthly</h3>
+<div class="price">$10</div>
+</div>
+
+<div class="card">
+<h3>anually</h3>
+<div class="price">$150</div>
+</div>
+
+</div>
+
+<script>
+const glow=document.getElementById("glow");
+document.addEventListener("mousemove",(e)=>{
+  glow.style.left=(e.clientX-110)+"px";
+  glow.style.top=(e.clientY-110)+"px";
+});
+</script>
+
+</body>
+</html>

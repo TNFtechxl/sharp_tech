@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sharp Tech — Courses</title>
+  <meta name="description" content="Sharp Tech Courses — learn affiliate marketing, coding, design, and digital skills." />
+
+  <style>
+    :root{
+      --bg:#060612;
+      --card:rgba(255,255,255,0.04);
+      --accent:#00e5ff;
+      --accent2:#a855f7;
+      --muted:#a1a1aa;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:Inter, system-ui, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(0,229,255,0.15), transparent 40%),
+                  radial-gradient(circle at 80% 80%, rgba(168,85,247,0.15), transparent 40%),
+                  var(--bg);
+      color:#e5e7eb;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:-30%;
+      z-index:-2;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(0,229,255,0.85), transparent 45%),
+        radial-gradient(circle at 70% 70%, rgba(168,85,247,0.85), transparent 45%);
+      filter: blur(120px);
+      animation: float 16s ease-in-out infinite alternate;
+    }
+
+    @keyframes float{
+      0%{transform:translate(0,0)}
+      100%{transform:translate(-60px,60px)}
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 40px;
+      background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo{
+      font-weight:800;
+      font-size:18px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    nav a{
+      margin-left:20px;
+      text-decoration:none;
+      color:var(--muted);
+      transition:.3s;
+      font-size:14px;
+    }
+
+    nav a:hover{color:#fff}
+
+    .container{
+      max-width:1100px;
+      margin:auto;
+      padding:40px 20px;
+    }
+
+    .hero{
+      text-align:center;
+      padding:60px 20px;
+    }
+
+    .hero h1{
+      font-size:42px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero p{color:var(--muted);margin-top:10px}
+
+    section{margin-top:60px}
+
+    h2{font-size:22px;margin-bottom:12px}
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+
+    .card{
+      background:var(--card);
+      padding:18px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.06);
+      transition:.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 10px 30px rgba(0,229,255,0.15);
+    }
+
+    .card h3{margin-bottom:6px}
+    .card p{color:var(--muted);font-size:14px}
+
+    .tag{
+      font-size:11px;
+      color:#000;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      padding:3px 8px;
+      border-radius:999px;
+      margin-left:6px;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:30px;
+      padding:12px 18px;
+      border-radius:10px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      color:#000;
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    footer{
+      text-align:center;
+      padding:40px;
+      color:var(--muted);
+      margin-top:60px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Sharp Tech courses</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="pricings.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="container">
+
+    
+
+  <section>
+    <h2>🔥 Core Courses</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Affiliate Marketing <span class="tag">Popular</span></h3>
+        <p>Learn how to promote products and earn commissions online step-by-step.</p>
+      </div>
+
+      <div class="card">
+        <h3>Video Editing</h3>
+        <p>Master editing tools and create content for TikTok, YouTube and clients.</p>
+      </div>
+
+      <div class="card">
+        <h3>Coding (Web Development)</h3>
+        <p>Build websites and apps using HTML, CSS, JavaScript and real projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>💡 Digital Services Training</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Graphic Design <span class="tag">Paid</span></h3>
+        <p>Create logos, flyers and brand designs like a professional.</p>
+      </div>
+
+      <div class="card">
+        <h3>Social Media Monetization</h3>
+        <p>Learn how to monetize WhatsApp, Instagram, TikTok and more.</p>
+      </div>
+
+      <div class="card">
+        <h3>Automation & Bots <span class="tag">Advanced</span></h3>
+        <p>Create Telegram and WhatsApp bots and automation systems.</p>
+      </div>
+
+      <div class="card">
+        <h3>Digital Ads & Marketing</h3>
+        <p>Learn how to promote products and run ads that convert.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Start Now</h2>
+    <p style="color:var(--muted)">Choose a course and begin your journey today.</p>
+    <a class="btn" href="pricings.html">View Pricing</a>
+  </section>
+
+</div>
+
+<footer>
+  © 2026 Sharp Tech • Built for future digital creators
+</footer>
+
+</body>
+</html>

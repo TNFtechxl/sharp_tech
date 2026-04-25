@@ -1,60 +1,178 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Sharp Tech — Pricing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sharp Tech — Contact</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  font-family:Inter;
-  background:#060612;
-  color:#fff;
+:root{
+  --bg:#060612;
+  --accent:#00e5ff;
+  --accent2:#a855f7;
+  --muted:#a1a1aa;
 }
 
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Inter, sans-serif;
+  background:var(--bg);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* 🌈 PAINT GLOW BACKGROUND */
 body::before{
   content:"";
   position:fixed;
-  inset:-30%;
-  z-index:-2;
+  inset:-50%;
+  z-index:-3;
   background:
-    radial-gradient(circle at 20% 20%, rgba(0,229,255,0.8), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(168,85,247,0.8), transparent 40%);
-  filter:blur(120px);
+    radial-gradient(circle at 20% 30%, rgba(0,255,255,0.9), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(168,85,247,0.9), transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(255,0,150,0.6), transparent 50%);
+  filter:blur(140px) saturate(180%);
+  animation:paintMove 12s ease-in-out infinite alternate;
 }
 
-/* MOUSE GLOW */
+@keyframes paintMove{
+  0%{transform:translate(-60px,-40px)}
+  50%{transform:translate(80px,60px)}
+  100%{transform:translate(-40px,80px)}
+}
+
+/* 🌟 MOUSE GLOW */
 .glow{
   position:fixed;
-  width:220px;
-  height:220px;
+  width:260px;
+  height:260px;
   border-radius:50%;
   pointer-events:none;
-  background:radial-gradient(circle, rgba(0,229,255,0.25), transparent 70%);
-  filter:blur(40px);
+  background:radial-gradient(circle, rgba(0,255,255,0.3), rgba(168,85,247,0.25), transparent 70%);
+  filter:blur(50px);
+  mix-blend-mode:screen;
   z-index:-1;
 }
 
+/* HEADER */
 header{
   display:flex;
   justify-content:space-between;
-  padding:20px;
+  align-items:center;
+  padding:20px 40px;
   background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(12px);
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
-a{color:#aaa;text-decoration:none;margin-left:15px}
+.logo{
+  font-weight:800;
+  font-size:20px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 
-.card{
-  display:inline-block;
-  width:250px;
-  margin:10px;
-  padding:20px;
-  border-radius:12px;
-  background:rgba(255,255,255,0.05);
+/* NAV */
+nav{
+  display:flex;
+}
+
+nav a{
+  margin-left:20px;
+  text-decoration:none;
+  color:var(--muted);
+  transition:.3s;
+}
+
+nav a:hover{color:#fff}
+
+/* MOBILE MENU */
+.menu-btn{
+  display:none;
+  font-size:22px;
+  cursor:pointer;
+}
+
+/* CONTAINER */
+.container{
+  max-width:600px;
+  margin:auto;
+  padding:60px 20px;
+}
+
+/* TITLE */
+h2{
+  text-align:center;
+  margin-bottom:20px;
+  font-size:clamp(24px,4vw,36px);
+}
+
+/* FORM */
+input, textarea{
+  width:100%;
+  padding:14px;
+  margin:10px 0;
+  border-radius:10px;
   border:1px solid rgba(255,255,255,0.08);
+  background:rgba(255,255,255,0.05);
+  color:#fff;
+  outline:none;
 }
 
-.price{font-size:28px;color:#00e5ff}
+input::placeholder, textarea::placeholder{
+  color:#aaa;
+}
+
+/* BUTTON */
+.btn{
+  display:block;
+  text-align:center;
+  margin-top:15px;
+  padding:14px;
+  border-radius:10px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:#000;
+  font-weight:700;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+  nav{
+    position:absolute;
+    top:70px;
+    right:0;
+    background:#060612;
+    flex-direction:column;
+    width:200px;
+    display:none;
+    padding:20px;
+  }
+
+  nav.active{
+    display:flex;
+  }
+
+  nav a{
+    margin:10px 0;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+}
 </style>
 </head>
 
@@ -63,40 +181,42 @@ a{color:#aaa;text-decoration:none;margin-left:15px}
 <div class="glow" id="glow"></div>
 
 <header>
-  <div><b>Pricing</b></div>
-  <nav>
+  <div class="logo">Sharp Tech</div>
+
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+  <nav id="nav">
     <a href="index.html">Home</a>
     <a href="courses.html">Courses</a>
-    <a href="pricings.html">Pricing</a>
+    <a href="pricing.html">Pricing</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
 
-<div style="text-align:center;padding:40px">
+<div class="container">
 
-<div class="card">
-<h3>weekly</h3>
-<div class="price">$2</div>
-</div>
+<h2>Contact Us</h2>
 
-<div class="card">
-<h3>monthly</h3>
-<div class="price">$10</div>
-</div>
+<input placeholder="Your Name">
+<input placeholder="Course Interested In">
+<textarea placeholder="Your Message"></textarea>
 
-<div class="card">
-<h3>anually</h3>
-<div class="price">$150</div>
-</div>
+<a class="btn" href="https://wa.me/2348050263447?text=Hello%20I%20am%20interested%20in%20your%20courses">Send Message</a>
 
 </div>
 
 <script>
+/* mouse glow */
 const glow=document.getElementById("glow");
 document.addEventListener("mousemove",(e)=>{
-  glow.style.left=(e.clientX-110)+"px";
-  glow.style.top=(e.clientY-110)+"px";
+  glow.style.left=(e.clientX-130)+"px";
+  glow.style.top=(e.clientY-130)+"px";
 });
+
+/* mobile menu */
+function toggleMenu(){
+  document.getElementById("nav").classList.toggle("active");
+}
 </script>
 
 </body>

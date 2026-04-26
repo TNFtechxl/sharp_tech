@@ -1,76 +1,181 @@
+/* ===== ROOT ===== */
 :root{
-  --bg:#060612;
+  --bg:#05050a;
   --accent:#00e5ff;
   --accent2:#a855f7;
-  --muted:#a1a1aa;
+  --accent3:#38bdf8;
+  --muted:#9ca3af;
 }
 
+/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:Inter,system-ui;
   background:var(--bg);
   color:#fff;
+  overflow-x:hidden;
 }
 
-/* glow background */
+/* ===== ULTRA BACKGROUND ===== */
 body::before{
   content:"";
   position:fixed;
-  inset:-30%;
-  z-index:-2;
+  inset:-40%;
+  z-index:-3;
   background:
-    radial-gradient(circle at 20% 20%, rgba(0,229,255,0.4), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(168,85,247,0.4), transparent 40%);
-  filter:blur(120px);
+    radial-gradient(circle at 20% 20%, rgba(0,229,255,0.6), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(168,85,247,0.6), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(56,189,248,0.4), transparent 50%);
+  filter:blur(140px);
+  animation:moveBG 15s infinite alternate ease-in-out;
 }
 
-/* header */
+@keyframes moveBG{
+  0%{transform:translate(0,0)}
+  100%{transform:translate(-80px,80px)}
+}
+
+/* ===== PARTICLE GLOW TRAIL ===== */
+.glow{
+  position:fixed;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  pointer-events:none;
+  background:radial-gradient(circle, rgba(0,229,255,0.4), transparent 70%);
+  filter:blur(60px);
+  z-index:-1;
+  mix-blend-mode:screen;
+}
+
+/* ===== HEADER ===== */
 header{
   display:flex;
   justify-content:space-between;
   padding:20px 40px;
   background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .logo{
-  font-weight:800;
+  font-weight:900;
+  font-size:20px;
   background:linear-gradient(90deg,var(--accent),var(--accent2));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
+/* NAV */
 nav a{
   margin-left:20px;
   color:var(--muted);
   text-decoration:none;
+  position:relative;
 }
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0%;
+  height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  transition:.3s;
+}
+nav a:hover::after{width:100%}
 nav a:hover{color:#fff}
 
-/* container */
+/* ===== CONTAINER ===== */
 .container{
-  max-width:1000px;
+  max-width:1100px;
   margin:auto;
-  padding:40px 20px;
+  padding:50px 20px;
 }
 
-/* cards */
+/* ===== HERO TEXT ===== */
+h1{
+  font-size:46px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradientMove 6s infinite linear;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0%}
+  100%{background-position:200%}
+}
+
+/* ===== CARDS ===== */
 .card{
+  position:relative;
   background:rgba(255,255,255,0.05);
-  padding:20px;
-  border-radius:12px;
-  margin:20px 0;
+  padding:24px;
+  border-radius:16px;
+  margin:25px 0;
   border:1px solid rgba(255,255,255,0.08);
+  transition:.4s;
+  transform-style:preserve-3d;
 }
 
-/* button */
+/* glow border */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:16px;
+  padding:1px;
+  background:linear-gradient(120deg,var(--accent),var(--accent2),var(--accent3));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  opacity:0;
+  transition:.3s;
+}
+
+/* hover effect */
+.card:hover{
+  transform:rotateX(6deg) rotateY(-6deg) scale(1.02);
+  box-shadow:0 20px 60px rgba(0,0,0,0.7);
+}
+.card:hover::before{opacity:1}
+
+/* ===== BUTTON ===== */
 .btn{
   display:inline-block;
-  margin-top:15px;
-  padding:12px 18px;
-  border-radius:10px;
+  margin-top:20px;
+  padding:12px 22px;
+  border-radius:12px;
   background:linear-gradient(90deg,var(--accent),var(--accent2));
   color:#000;
   font-weight:700;
   text-decoration:none;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 12px 30px rgba(0,229,255,0.4);
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .8s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  h1{font-size:32px}
+  header{flex-direction:column;gap:10px}
 }

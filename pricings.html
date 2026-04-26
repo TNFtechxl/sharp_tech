@@ -24,3 +24,31 @@
 <a class="btn" href="contact.html">Contact to Enroll</a>
 
 </div>
+<script>
+
+/* ===== MOUSE GLOW ===== */
+const glow = document.getElementById("glow");
+
+document.addEventListener("mousemove",(e)=>{
+  glow.style.left = (e.clientX - 140) + "px";
+  glow.style.top = (e.clientY - 140) + "px";
+});
+
+/* ===== SCROLL REVEAL ===== */
+const reveals = document.querySelectorAll(".card");
+
+function reveal(){
+  const trigger = window.innerHeight * 0.85;
+
+  reveals.forEach(el=>{
+    const top = el.getBoundingClientRect().top;
+    if(top < trigger){
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", reveal);
+reveal();
+
+</script>
